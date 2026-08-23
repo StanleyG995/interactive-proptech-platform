@@ -1,5 +1,4 @@
-import BuildingPlan from '@/app/components/BuildingPlan';
-
+import BuildingPlan from "@/components/BuildingPlan";
 
 export default function Home() {
   return (
