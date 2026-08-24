@@ -7,7 +7,7 @@ const BuildingPlan = () => {
   const [activeFloor, setActiveFloor] = useState<number | null>(null);
 
   return (
-    <div className="building-plan relative w-full mx-auto">
+    <div className="building-plan relative w-full max-w-[1300px] mx-auto">
       <div className="relative w-full mx-auto">
         <img
           src="/building.webp"
