@@ -7,7 +7,7 @@ const BuildingPlan = () => {
   const [activeFloor, setActiveFloor] = useState<number | null>(null);
 
   return (
-    <div className="building-plan relative w-full  mx-auto">
+    <div className="building-plan relative w-full mx-auto">
       <div className="relative w-full mx-auto">
         <img
           src="/building.webp"
@@ -18,7 +18,7 @@ const BuildingPlan = () => {
         <svg
           width="100%"
           height="100%"
-          viewBox="0 0 1920 1080"
+          viewBox="0 0 1920 740"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
           className="absolute inset-0 w-full h-full"
@@ -43,6 +43,9 @@ const BuildingPlan = () => {
                 }}
                 onMouseEnter={() => {
                   setActiveFloor(floor.number);
+                }}
+                onMouseLeave={() => {
+                  setActiveFloor(null);
                 }}
                 onClick={() => {
                   setActiveFloor(floor.number);
