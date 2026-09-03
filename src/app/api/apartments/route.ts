@@ -3,7 +3,7 @@ import { getApartments } from '@/services/apartmentsService';
 
 export async function GET() {
   try {
-    const apartments = await getApartments(null);
+    const apartments = await getApartments();
     return NextResponse.json(apartments);
   } catch (error) {
     console.error("Błąd bazy danych:", error);
