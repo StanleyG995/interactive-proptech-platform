@@ -1,12 +1,16 @@
 import { supabase } from "@/lib/supabase";
 
 export async function getApartments() {
-    const query = supabase.from('apartments').select('*').order('id', { ascending: true });
-
-    const { data, error } = await query;
+    const { data, error } = await supabase
+        .from('apartments')
+        .select('*')
+        .order('id', { ascending: true });
 
     if (error) {
-        console.error('Błąd pobierania mieszkań:', error.message);
+        throw new Error(`Supabase error: ${error.message}`);
+    }
+
+    if (!data) {
         return [];
     }
 
