@@ -1,10 +1,13 @@
 import { supabase } from "@/lib/supabase";
 
-export async function getApartments(floor?: number | null) {
+export async function getApartments(floor?: number | string | null) {
     let query = supabase.from('apartments').select('*').order('id', { ascending: true });
 
-    if (floor !== null && floor !== undefined) {
-        query = query.eq('floor', floor);
+    // Konwertujemy na liczbę i sprawdzamy, czy to faktycznie poprawna cyfra
+    const parsedFloor = floor !== undefined && floor !== null && floor !== '' ? Number(floor) : null;
+
+    if (parsedFloor !== null && !isNaN(parsedFloor)) {
+        query = query.eq('floor', parsedFloor);
     }
 
     const { data, error } = await query;
