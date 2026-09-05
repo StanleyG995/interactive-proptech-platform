@@ -7,7 +7,7 @@ export function useApartments() {
         queryKey: ['apartments'],
         queryFn: async () => {
             const res = await fetch('/api/apartments');
-            if (!res.ok) throw new Error('Błąd pobierania danych mieszkań');
+            if (!res.ok) throw new Error('Error fetching apartments');
             return res.json();
         },
         staleTime: 1000 * 60 * 5,

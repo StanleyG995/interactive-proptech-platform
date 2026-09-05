@@ -1,6 +1,7 @@
 "use client";
 import BuildingPlan from "@/components/BuildingPlan";
 import ApartmentsList from "@/components/ApartmetsList";
+import ClientsList from "@/components/ClientsList";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <main className="flex flex-col w-full">
         <BuildingPlan />
         <ApartmentsList />
+        <ClientsList />
       </main>
     </div>
   );

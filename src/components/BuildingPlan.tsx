@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 import { useState } from "react";
-import { FLOORS } from "@/types/buildingTypes";
+import { FLOORS } from "@/types/building.types";
 
 const BuildingPlan = () => {
   const [activeFloor, setActiveFloor] = useState<number | null>(null);
