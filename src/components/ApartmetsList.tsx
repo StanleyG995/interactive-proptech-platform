@@ -22,7 +22,7 @@ export default function ApartmentsList() {
       isLoading={isLoading}
       error={error}
       headers={headers}
-      loadingText="Ładowanie listy mieszkań..."
+      loadingText="Loading apartments list..."
       renderRow={(apartment) => (
         <ApartmentsListItem key={apartment.id} {...apartment} />
       )}

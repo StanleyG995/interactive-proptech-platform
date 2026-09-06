@@ -13,7 +13,7 @@ export default function ClientsList() {
       isLoading={isLoading}
       error={error}
       headers={headers}
-      loadingText="Ładowanie listy klientów..."
+      loadingText="Loading clients list..."
       renderRow={(client) => <ClientsListItem key={client.id} {...client} />}
     />
   );

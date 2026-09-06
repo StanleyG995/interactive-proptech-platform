@@ -2,6 +2,7 @@
 import BuildingPlan from "@/components/BuildingPlan";
 import ApartmentsList from "@/components/ApartmetsList";
 import ClientsList from "@/components/ClientsList";
+import EmployeesList from "@/components/EmployeesList";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <BuildingPlan />
         <ApartmentsList />
         <ClientsList />
+        <EmployeesList/>
       </main>
     </div>
   );
