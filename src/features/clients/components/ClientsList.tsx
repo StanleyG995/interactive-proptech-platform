@@ -1,7 +1,7 @@
 "use client";
 import GenericTable from "@/components/GenericTable";
-import ClientsListItem from "@/components/List/Items/ClientsListItem";
-import { useClients } from "@/hooks/useClients";
+import ClientsListItem from "@/features/clients/components/ClientsListItem";
+import { useClients } from "@/features/clients/hooks/useClients";
 
 export default function ClientsList() {
   const { data, isLoading, error } = useClients();

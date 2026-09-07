@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-'use client';
+"use client";
 import { useState } from "react";
 import { FLOORS } from "@/types/building.types";
-import { useApartmentsStore } from "@/store/useApartmentsStore";
+import { useApartmentsStore } from "@/features/apartments/store/useApartmentsStore";
 
 const BuildingPlan = () => {
   const [activeFloor, setActiveFloor] = useState<number | null>(null);
@@ -41,7 +41,7 @@ const BuildingPlan = () => {
                 className="pointer-events-auto cursor-pointer transition-opacity duration-300"
                 style={{
                   fill: "#f0690b",
-                  opacity: isActive ? 0.6 : 0, 
+                  opacity: isActive ? 0.6 : 0,
                 }}
                 onMouseEnter={() => {
                   setActiveFloor(floor.number);

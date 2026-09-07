@@ -1,12 +1,12 @@
-import { ClientData } from "@/types/client.types";
+import { EmployeeData } from "@/features/employees/types/employee.types";
 
-const ClientsListItem = ({
+const EmployeesListItem = ({
   id,
   fullName,
   email,
-  phone,
+  role,
   createdAt,
-}: ClientData) => {
+}: EmployeeData) => {
   return (
     <tr
       className={`border border-gray-300 p-y-4 hover:bg-gray-100 transition-colors duration-300`}
@@ -14,7 +14,7 @@ const ClientsListItem = ({
       <td className="py-4 px-3">{id}</td>
       <td className="py-4 px-3">{fullName}</td>
       <td className="py-4 px-3">{email}</td>
-      <td className="py-4 px-3">{phone}</td>
+      <td className="py-4 px-3">{role}</td>
       <td className="py-4 px-3">
         {new Date(createdAt).toLocaleString("pl-PL", {
           day: "2-digit",
@@ -29,4 +29,4 @@ const ClientsListItem = ({
   );
 };
 
-export default ClientsListItem;
+export default EmployeesListItem;

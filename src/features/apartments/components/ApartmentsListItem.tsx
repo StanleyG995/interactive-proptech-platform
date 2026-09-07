@@ -1,4 +1,4 @@
-import { ApartmentData } from "@/types/apartment.types";
+import { ApartmentData } from "@/features/apartments/types/apartment.types";
 
 const ApartmentsListItem = ({
   id,

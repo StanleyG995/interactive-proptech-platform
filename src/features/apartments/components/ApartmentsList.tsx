@@ -1,7 +1,7 @@
 "use client";
 import GenericTable from "@/components/GenericTable";
-import ApartmentsListItem from "@/components/List/Items/ApartmentsListItem";
-import { useApartments } from "@/hooks/useApartments";
+import ApartmentsListItem from "@/features/apartments/components/ApartmentsListItem";
+import { useApartments } from "@/features/apartments/hooks/useApartments";
 
 export default function ApartmentsList() {
   const { data, isLoading, error } = useApartments();

@@ -1,7 +1,7 @@
 "use client";
 import GenericTable from "@/components/GenericTable";
 import EmployeesListItem from "@/components/List/Items/EmployeesListItem";
-import { useEmployees } from "@/hooks/useEmployees";
+import { useEmployees } from "@/features/employees/hooks/useEmployees";
 
 export default function EmployeesList() {
   const { data, isLoading, error } = useEmployees();

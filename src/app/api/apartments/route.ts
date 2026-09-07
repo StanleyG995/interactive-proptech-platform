@@ -1,16 +1,16 @@
-import { NextResponse, NextRequest } from 'next/server';
-import { getApartments } from '@/services/apartmentsService';
+import { NextResponse, NextRequest } from "next/server";
+import { getApartments } from "@/features/apartments/services/apartmentsService";
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
 
     const filters = {
-      floor: searchParams.get('floor') || undefined,
-      priceFrom: searchParams.get('priceFrom') || undefined,
-      priceTo: searchParams.get('priceTo') || undefined,
-      sortCategory: searchParams.get('sortCategory') || undefined,
-      sortOrder: (searchParams.get('sortOrder') as 'asc' | 'desc') || 'asc',
+      floor: searchParams.get("floor") || undefined,
+      priceFrom: searchParams.get("priceFrom") || undefined,
+      priceTo: searchParams.get("priceTo") || undefined,
+      sortCategory: searchParams.get("sortCategory") || undefined,
+      sortOrder: (searchParams.get("sortOrder") as "asc" | "desc") || "asc",
     };
 
     const apartments = await getApartments(filters);

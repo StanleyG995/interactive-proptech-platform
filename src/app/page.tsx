@@ -1,8 +1,8 @@
 "use client";
 import BuildingPlan from "@/components/BuildingPlan";
-import ApartmentsList from "@/components/ApartmetsList";
-import ClientsList from "@/components/ClientsList";
-import EmployeesList from "@/components/EmployeesList";
+import ApartmentsList from "@/features/apartments/components/ApartmentsList";
+import ClientsList from "@/features/clients/components/ClientsList";
+import EmployeesList from "@/features/employees/components/EmployeesList";
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         <BuildingPlan />
         <ApartmentsList />
         <ClientsList />
-        <EmployeesList/>
+        <EmployeesList />
       </main>
     </div>
   );

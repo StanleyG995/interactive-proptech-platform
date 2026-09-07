@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getEmployees } from '@/services/employeesService';
+import { getEmployees } from '@/features/employees/services/employeesService';
 
 export async function GET() {
   try {
