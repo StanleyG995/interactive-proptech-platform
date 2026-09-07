@@ -1,6 +1,6 @@
 "use client";
 import GenericTable from "@/components/GenericTable";
-import EmployeesListItem from "@/components/List/Items/EmployeesListItem";
+import EmployeesListItem from "@/features/employees/components/EmployeesListItem";
 import { useEmployees } from "@/features/employees/hooks/useEmployees";
 
 export default function EmployeesList() {
