@@ -18,10 +18,12 @@ const ApartmentsListItem = ({
       <td className="py-4 px-3">{floor}</td>
       <td className="py-4 px-3">{balconyArea} m²</td>
       <td className="py-4 px-3">{price ? `${price} PLN` : "-"}</td>
-      <td>{pricePerSquareMeter ? `${pricePerSquareMeter} PLN/m²` : "-"}</td>
+      <td className="py-4 px-3">
+        {pricePerSquareMeter ? `${pricePerSquareMeter} PLN/m²` : "-"}
+      </td>
       <td
         className={
-          status === "available"
+          "py-4 px-3" + status === "available"
             ? " text-green-600"
             : status === "reserved"
               ? " text-yellow-600"
