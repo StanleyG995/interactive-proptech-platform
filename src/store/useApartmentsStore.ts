@@ -1,17 +1,5 @@
 import { create } from 'zustand';
-
-interface ApartmentsState {
-    floor: string | number;
-    priceFrom: string | number;
-    priceTo: string | number;
-    sortCategory: string;
-    sortOrder: 'asc' | 'desc';
-    // Akcje
-    setFloor: (floor: string | number) => void;
-    setPriceRange: (from: string | number, to: string | number) => void;
-    setSorting: (category: string, order: 'asc' | 'desc') => void;
-    resetFilters: () => void;
-}
+import { ApartmentsState } from '@/types/apartments-store.types';
 
 export const useApartmentsStore = create<ApartmentsState>((set) => ({
     floor: '',

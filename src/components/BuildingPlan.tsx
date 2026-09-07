@@ -2,9 +2,11 @@
 'use client';
 import { useState } from "react";
 import { FLOORS } from "@/types/building.types";
+import { useApartmentsStore } from "@/store/useApartmentsStore";
 
 const BuildingPlan = () => {
   const [activeFloor, setActiveFloor] = useState<number | null>(null);
+  const setFloor = useApartmentsStore((state) => state.setFloor);
 
   return (
     <div className="building-plan relative w-full max-w-[1300px] mx-auto">
@@ -48,8 +50,7 @@ const BuildingPlan = () => {
                   setActiveFloor(null);
                 }}
                 onClick={() => {
-                  setActiveFloor(floor.number);
-                  console.log(`${floor.number}`);
+                  setFloor(floor.number);
                 }}
               />
             );
