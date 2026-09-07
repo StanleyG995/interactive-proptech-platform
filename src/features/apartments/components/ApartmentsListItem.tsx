@@ -23,11 +23,11 @@ const ApartmentsListItem = ({
       </td>
       <td
         className={
-          "py-4 px-3" + status === "available"
+          "py-4 px-3" + (status === "available"
             ? " text-green-600"
             : status === "reserved"
               ? " text-yellow-600"
-              : " text-red-600"
+              : " text-red-600")
         }
       >
         {status}
