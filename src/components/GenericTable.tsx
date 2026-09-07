@@ -24,9 +24,9 @@ export default function GenericTable<T>({
                     <tr>
                         <td colSpan={headers.length} className="h-full text-center align-middle">
                             <div className="flex justify-center items-center h-full gap-4">
-                                <div className="inline-block animate-spin rounded-md h-4 w-4 bg-[#f0690b]"></div>
-                                <div className="inline-block animate-spin rounded-md h-4 w-4 bg-[#f0690b]"></div>
-                                <div className="inline-block animate-spin rounded-md h-4 w-4 bg-[#f0690b]"></div>
+                                <div className="inline-block animate-spin rounded-sm h-3 w-3 bg-[#f0690b]"></div>
+                                <div className="inline-block animate-spin rounded-sm h-3 w-3 bg-[#f0690b]"></div>
+                                <div className="inline-block animate-spin rounded-sm h-3 w-3 bg-[#f0690b]"></div>
                             </div>
                         </td>
                     </tr>
