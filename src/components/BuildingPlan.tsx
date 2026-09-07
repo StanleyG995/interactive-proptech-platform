@@ -10,11 +10,11 @@ const BuildingPlan = () => {
 
   return (
     <div className="building-plan relative w-full max-w-[1300px] mx-auto">
-      <div className="relative w-full mx-auto">
+      <div className="relative w-full mx-auto ">
         <img
           src="/building.webp"
           alt="Building Plan"
-          className="w-full h-auto block"
+          className="w-full h-auto block rounded-lg"
         />
 
         <svg
