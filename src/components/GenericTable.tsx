@@ -9,8 +9,8 @@ export default function GenericTable<T>({
     loadingText = 'Loading data...'
 }: genericTableProps<T>) {
     if (isLoading) return (
-        <div className="w-full max-w-[1300px] m-auto h-[400px] overflow-y-auto border border-gray-200 rounded-lg shadow-sm bg-white ">
-            <table className="w-full h-full border-collapse text-zinc-800 text-left ">
+        <div className="w-full max-w-[1300px] m-auto h-[400px] overflow-y-scroll border border-gray-200 rounded-lg shadow-sm bg-white ">
+            <table className="w-full h-full border-collapse text-zinc-800 text-left table-fixed">
                 <thead className="bg-gray-100 sticky top-0 z-10 border-b border-gray-200 ">
                     <tr>
                         {headers.map((header, index) => (
@@ -38,8 +38,8 @@ export default function GenericTable<T>({
     if (!data || data.length === 0) return <p className="text-center py-4 text-zinc-500">No data to display.</p>;
 
     return (
-        <div className="w-full max-w-[1300px] m-auto h-[400px] overflow-y-auto border border-gray-200 rounded-lg shadow-sm bg-white ">
-            <table className="w-full border-collapse text-zinc-800 text-left ">
+        <div className="w-full max-w-[1300px] m-auto h-[400px] overflow-y-scroll border border-gray-200 rounded-lg shadow-sm bg-white ">
+            <table className="w-full border-collapse text-zinc-800 text-left table-fixed">
                 <thead className="bg-gray-100 sticky top-0 z-10 border-b border-gray-200 ">
                     <tr>
                         {headers.map((header, index) => (
