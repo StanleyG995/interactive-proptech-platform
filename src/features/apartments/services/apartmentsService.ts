@@ -1,3 +1,4 @@
+import { ApartmentData } from "@/features/apartments/types/apartment.types";
 import { supabase } from "@/lib/supabase";
 
 interface ApartmentQueryParams {
@@ -6,6 +7,19 @@ interface ApartmentQueryParams {
     priceTo?: string | number;
     sortCategory?: string;
     sortOrder?: 'asc' | 'desc';
+}
+
+interface RawApartmentData {
+    id: string;
+    building: string;
+    number: string;
+    area: number;
+    rooms: number;
+    floor: number;
+    balcony_area: number;
+    price: number;
+    price_per_square_meter: number;
+    status: "available" | "sold" | "reserved";
 }
 
 export async function getApartments(params?: ApartmentQueryParams) {
@@ -25,7 +39,7 @@ export async function getApartments(params?: ApartmentQueryParams) {
     const rawSortCategory = params?.sortCategory || 'building';
     const ascending = params?.sortOrder === 'desc' ? false : true;
 
-    // Słownik tłumaczący camelCase na kolumny snake_case w widoku SQL
+
     const sortColumnsMap: Record<string, string> = {
         building: 'building',
         number: 'number',
@@ -53,7 +67,7 @@ export async function getApartments(params?: ApartmentQueryParams) {
         return [];
     }
 
-    return data.map((item: any) => ({
+    return data.map((item: RawApartmentData): ApartmentData => ({
         id: item.id,
         building: item.building,
         number: item.number,
