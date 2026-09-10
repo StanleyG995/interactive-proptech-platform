@@ -1,4 +1,4 @@
-import { GenericTableProps, HeaderItem } from "@/types/generic-table.types";
+import { GenericTableProps } from "@/types/generic-table.types";
 
 export default function GenericTable<T>({
   data,
