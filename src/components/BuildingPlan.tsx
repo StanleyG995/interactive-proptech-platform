@@ -8,7 +8,7 @@ import { useAllApartments } from "@/features/apartments/hooks/useAllApartments";
 const BuildingPlan = () => {
   const [activeFloor, setActiveFloor] = useState<FloorData | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  
+
   const setBuilding = useApartmentsStore((state) => state.setBuilding);
   const setFloor = useApartmentsStore((state) => state.setFloor);
   const { data: apartments = [] } = useAllApartments();
@@ -25,21 +25,27 @@ const BuildingPlan = () => {
   // Obliczanie statystyk dla aktywnego piętra
   const getFloorStats = (building: string, floorNumber: number) => {
     const floorApartments = apartments.filter(
-      (apt) => apt.building === building && apt.floor === floorNumber
+      (apt) => apt.building === building && apt.floor === floorNumber,
     );
 
     const total = floorApartments.length;
-    const available = floorApartments.filter((apt) => apt.status === "available").length;
+    const available = floorApartments.filter(
+      (apt) => apt.status === "available",
+    ).length;
     const sold = floorApartments.filter((apt) => apt.status === "sold").length;
-    const reserved = floorApartments.filter((apt) => apt.status === "reserved").length;
+    const reserved = floorApartments.filter(
+      (apt) => apt.status === "reserved",
+    ).length;
 
     return { total, available, sold, reserved };
   };
 
-  const stats = activeFloor ? getFloorStats(activeFloor.building, activeFloor.number) : null;
+  const stats = activeFloor
+    ? getFloorStats(activeFloor.building, activeFloor.number)
+    : null;
 
   return (
-    <div 
+    <div
       className="building-plan relative w-full max-w-[1500px] mx-auto cursor-default"
       onMouseMove={handleMouseMove}
     >
@@ -90,21 +96,42 @@ const BuildingPlan = () => {
         {/* Tooltip */}
         {activeFloor && stats && (
           <div
-            className="absolute z-50 pointer-events-none bg-gray-100/90 text-zinc-800 px-4 py-3 rounded-lg shadow-xl text-sm backdrop-blur-sm border border-slate-700 transition-all duration-75 ease-out"
+            className="absolute z-50 pointer-events-none bg-white/80 text-zinc-800 px-4 py-3 rounded-lg shadow-sm text-sm backdrop-blur-sm border border-gray-200 transition-all duration-75 ease-out"
             style={{
               left: `${mousePos.x + 15}px`,
               top: `${mousePos.y + 15}px`,
               transform: "translate(0, 0)",
             }}
           >
-            <div className="font-semibold text-base mb-1 border-b border-slate-700 pb-1">
-              Budynek {activeFloor.building} • Piętro {activeFloor.number}
+            <div className="flex justify-between items-center mb-2">
+              <div className="font-semibold text-2xl text-[#f0690b] mb-1  pb-1">
+                {activeFloor.building}
+              </div>
+              <div className="font-semibold text-2xl mb-1 pb-1">
+                P-{activeFloor.number}
+              </div>
             </div>
-            <div className="space-y-1 text-zinc-800-300">
-              <div>Wszystkie mieszkania: <span className="font-bold">{stats.total}</span></div>
-              <div className="text-zinc-800">Wolne: <span className="font-bold text-emerald-700">{stats.available}</span></div>
-              <div className="text-zinc-800">Zarezerwowane: <span className="font-bold text-amber-700">{stats.reserved}</span></div>
-              <div className="text-zinc-800">Sprzedane: <span className="font-bold text-red-700">{stats.sold}</span></div>
+
+            <div className="space-y-1 flex flex-col gap-2">
+              <div className="flex justify-between text-zinc-600 uppercase text-sm tracking-wider gap-6">
+                Wolne{" "}
+                <span className="font-bold text-emerald-700">
+                  {stats.available}
+                </span>
+              </div>
+              <div className="flex justify-between text-zinc-600 uppercase text-sm tracking-wider gap-6">
+                Zarezer.{" "}
+                <span className="font-bold text-amber-600">
+                  {stats.reserved}
+                </span>
+              </div>
+              <div className="flex justify-between text-zinc-600 uppercase text-sm tracking-wider gap-6">
+                Sprzedane{" "}
+                <span className="font-bold text-red-700">{stats.sold}</span>
+              </div>
+              <div className="flex justify-between text-zinc-900 uppercase text-sm tracking-wider gap-6 border-t border-gray-400 pt-2">
+                Wszystkie <span className="font-bold">{stats.total}</span>
+              </div>
             </div>
           </div>
         )}
