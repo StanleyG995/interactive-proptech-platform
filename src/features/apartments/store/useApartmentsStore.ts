@@ -5,7 +5,7 @@ export const useApartmentsStore = create<ApartmentsState>((set) => ({
   floor: "",
   priceFrom: "",
   priceTo: "",
-  sortCategory: "id",
+  sortCategory: "",
   sortOrder: "asc",
 
   setFloor: (floor) => set({ floor }),
@@ -16,7 +16,7 @@ export const useApartmentsStore = create<ApartmentsState>((set) => ({
       floor: "",
       priceFrom: "",
       priceTo: "",
-      sortCategory: "id",
+      sortCategory: "",
       sortOrder: "asc",
     }),
 }));

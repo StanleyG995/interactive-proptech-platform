@@ -25,7 +25,7 @@ export default function ApartmentsList() {
       headers={headers}
       loadingText="Loading apartments list..."
       renderRow={(apartment) => (
-        <ApartmentsListItem key={apartment.number} {...apartment} />
+        <ApartmentsListItem key={apartment.id} {...apartment} />
       )}
     />
   );
