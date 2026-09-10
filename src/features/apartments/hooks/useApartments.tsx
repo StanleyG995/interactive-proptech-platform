@@ -5,11 +5,12 @@ import { ApartmentData } from "@/features/apartments/types/apartment.types";
 import { useApartmentsStore } from "@/features/apartments/store/useApartmentsStore";
 
 export function useApartments() {
-  const { floor, priceFrom, priceTo, sortCategory, sortOrder } =
+  const { building, floor, priceFrom, priceTo, sortCategory, sortOrder } =
     useApartmentsStore();
 
   useEffect(() => {
     const params = new URLSearchParams();
+    if (building !== "") params.append("building", String(building));
     if (floor !== "") params.append("floor", String(floor));
     if (priceFrom !== "") params.append("priceFrom", String(priceFrom));
     if (priceTo !== "") params.append("priceTo", String(priceTo));
@@ -20,15 +21,16 @@ export function useApartments() {
     const newUrl = queryString ? `?${queryString}` : window.location.pathname;
     
     window.history.replaceState({}, "", newUrl);
-  }, [floor, priceFrom, priceTo, sortCategory, sortOrder]);
+  }, [building, floor, priceFrom, priceTo, sortCategory, sortOrder]);
 
   return useQuery<ApartmentData[], Error>({
     queryKey: [
       "apartments",
-      { floor, priceFrom, priceTo, sortCategory, sortOrder },
+      { building, floor, priceFrom, priceTo, sortCategory, sortOrder },
     ],
     queryFn: async () => {
       const params = new URLSearchParams();
+      if (building !== "") params.append("building", String(building));
       if (floor !== "") params.append("floor", String(floor));
       if (priceFrom !== "") params.append("priceFrom", String(priceFrom));
       if (priceTo !== "") params.append("priceTo", String(priceTo));

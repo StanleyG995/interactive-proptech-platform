@@ -2,6 +2,7 @@ import { ApartmentData } from "@/features/apartments/types/apartment.types";
 import { supabase } from "@/lib/supabase";
 
 interface ApartmentQueryParams {
+    building?: string;
     floor?: string | number;
     priceFrom?: string | number;
     priceTo?: string | number;
@@ -34,6 +35,10 @@ export async function getApartments(params?: ApartmentQueryParams) {
     }
     if (params?.priceTo !== undefined && params.priceTo !== '' && params.priceTo !== 'undefined') {
         query = query.lte('price', Number(params.priceTo));
+    }
+
+    if (params?.building !== undefined && params.building !== '' && params.building !== 'undefined') {
+        query = query.eq('building', params.building);
     }
 
     const rawSortCategory = params?.sortCategory || 'building';

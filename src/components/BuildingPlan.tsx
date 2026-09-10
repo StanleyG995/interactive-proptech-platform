@@ -5,14 +5,15 @@ import { FLOORS } from "@/types/building.types";
 import { useApartmentsStore } from "@/features/apartments/store/useApartmentsStore";
 
 const BuildingPlan = () => {
-  const [activeFloor, setActiveFloor] = useState<number | null>(null);
+  const [activeFloorId, setActiveFloorId] = useState<number | null>(null);
+  const setBuilding = useApartmentsStore((state) => state.setBuilding);
   const setFloor = useApartmentsStore((state) => state.setFloor);
 
   return (
-    <div className="building-plan relative w-full max-w-[1300px] mx-auto">
+    <div className="building-plan relative w-full max-w-[1500px] mx-auto">
       <div className="relative w-full mx-auto ">
         <img
-          src="/building.webp"
+          src="/building_new_solid.webp"
           alt="Building Plan"
           className="w-full h-auto block rounded-lg"
         />
@@ -32,7 +33,7 @@ const BuildingPlan = () => {
           }}
         >
           {FLOORS.map((floor) => {
-            const isActive = activeFloor === floor.number;
+            const isActive = activeFloorId === floor.id;
 
             return (
               <path
@@ -44,12 +45,13 @@ const BuildingPlan = () => {
                   opacity: isActive ? 0.6 : 0,
                 }}
                 onMouseEnter={() => {
-                  setActiveFloor(floor.number);
+                  setActiveFloorId(floor.id);
                 }}
                 onMouseLeave={() => {
-                  setActiveFloor(null);
+                  setActiveFloorId(null);
                 }}
                 onClick={() => {
+                  setBuilding(floor.building);
                   setFloor(floor.number);
                 }}
               />
