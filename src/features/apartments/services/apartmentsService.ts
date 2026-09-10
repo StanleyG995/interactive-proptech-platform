@@ -22,10 +22,25 @@ export async function getApartments(params?: ApartmentQueryParams) {
         query = query.lte('price', Number(params.priceTo));
     }
 
-    const sortCategory = params?.sortCategory || 'building';
+    const rawSortCategory = params?.sortCategory || 'building';
     const ascending = params?.sortOrder === 'desc' ? false : true;
 
-    console.log(sortCategory)
+    // Słownik tłumaczący camelCase na kolumny snake_case w widoku SQL
+    const sortColumnsMap: Record<string, string> = {
+        building: 'building',
+        number: 'number',
+        area: 'area',
+        rooms: 'rooms',
+        floor: 'floor',
+        balconyArea: 'balcony_area',
+        price: 'price',
+        pricePerSquareMeter: 'price_per_square_meter',
+        status: 'status',
+    };
+
+    const sortCategory = sortColumnsMap[rawSortCategory] || 'building';
+
+    console.log("Sortowanie po kolumnie DB:", sortCategory);
     query = query.order(sortCategory, { ascending });
 
     const { data, error } = await query;
@@ -38,7 +53,6 @@ export async function getApartments(params?: ApartmentQueryParams) {
         return [];
     }
 
-    // Zwracamy dane idealnie dopasowane do interfejsu
     return data.map((item: any) => ({
         id: item.id,
         building: item.building,
