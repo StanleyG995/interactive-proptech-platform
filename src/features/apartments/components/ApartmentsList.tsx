@@ -6,6 +6,7 @@ import { useApartments } from "@/features/apartments/hooks/useApartments";
 export default function ApartmentsList() {
   const { data, isLoading, error } = useApartments();
   const headers = [
+    "Building",
     "Number",
     "Area (m²)",
     "Rooms",
@@ -24,7 +25,7 @@ export default function ApartmentsList() {
       headers={headers}
       loadingText="Loading apartments list..."
       renderRow={(apartment) => (
-        <ApartmentsListItem key={apartment.id} {...apartment} />
+        <ApartmentsListItem key={apartment.number} {...apartment} />
       )}
     />
   );

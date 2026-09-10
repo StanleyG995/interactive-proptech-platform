@@ -1,5 +1,6 @@
 export interface ApartmentData {
-  id: number;
+  building: string;
+  number: string;
   area: number;
   rooms: number;
   floor: number;

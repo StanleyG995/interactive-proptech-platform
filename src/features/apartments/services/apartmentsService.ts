@@ -9,8 +9,20 @@ interface ApartmentQueryParams {
 }
 
 export async function getApartments(params?: ApartmentQueryParams) {
-    let query = supabase.from('apartments').select('*');
-
+    let query = supabase.from('apartments').select(`
+        id,
+        number,
+        floor,
+        area,
+        rooms,
+        balcony_area,
+        price,
+        price_per_square_meter,
+        status,
+        buildings (
+            code
+        )
+    `);
 
     if (params?.floor !== undefined && params.floor !== '' && params.floor !== 'undefined') {
         query = query.eq('floor', Number(params.floor));
@@ -23,9 +35,15 @@ export async function getApartments(params?: ApartmentQueryParams) {
         query = query.lte('price', Number(params.priceTo));
     }
 
-    const sortCategory = params?.sortCategory || 'id';
+    const sortCategory = params?.sortCategory || 'building';
     const ascending = params?.sortOrder === 'desc' ? false : true;
-    query = query.order(sortCategory, { ascending });
+
+  
+    if (sortCategory === 'building') {
+        query = query.order('code', { referencedTable: 'buildings', ascending });
+    } else {
+        query = query.order(sortCategory, { ascending });
+    }
 
     const { data, error } = await query;
 
@@ -37,8 +55,10 @@ export async function getApartments(params?: ApartmentQueryParams) {
         return [];
     }
 
-    return data.map((item) => ({
+    return data.map((item: any) => ({
         id: item.id,
+        building: item.buildings?.code,
+        number: item.number,
         area: item.area,
         rooms: item.rooms,
         floor: item.floor,

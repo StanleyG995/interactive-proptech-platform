@@ -1,7 +1,8 @@
 import { ApartmentData } from "@/features/apartments/types/apartment.types";
 
 const ApartmentsListItem = ({
-  id,
+  building,
+  number,
   area,
   rooms,
   floor,
@@ -12,7 +13,8 @@ const ApartmentsListItem = ({
 }: ApartmentData) => {
   return (
     <tr>
-      <td className="py-4 px-3">{id}</td>
+      <td className="py-4 px-3">{building}</td>
+      <td className="py-4 px-3">{number}</td>
       <td className="py-4 px-3">{area} m²</td>
       <td className="py-4 px-3">{rooms}</td>
       <td className="py-4 px-3">{floor}</td>
