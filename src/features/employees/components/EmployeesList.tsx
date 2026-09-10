@@ -5,7 +5,13 @@ import { useEmployees } from "@/features/employees/hooks/useEmployees";
 
 export default function EmployeesList() {
   const { data, isLoading, error } = useEmployees();
-  const headers = ["ID", "Full name", "Email", "Role", "Created at"];
+  const headers = [
+    { label: "ID", key: "id" },
+    { label: "Full name", key: "fullName" },
+    { label: "Email", key: "email" },
+    { label: "Role", key: "role" },
+    { label: "Created at", key: "createdAt" },
+  ];
 
   return (
     <GenericTable

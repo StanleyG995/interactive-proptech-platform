@@ -5,7 +5,13 @@ import { useClients } from "@/features/clients/hooks/useClients";
 
 export default function ClientsList() {
   const { data, isLoading, error } = useClients();
-  const headers = ["ID", "Full name", "Email", "Phone", "Created at"];
+  const headers = [
+    { label: "ID", key: "id" },
+    { label: "Full name", key: "fullName" },
+    { label: "Email", key: "email" },
+    { label: "Phone", key: "phone" },
+    { label: "Created at", key: "createdAt" },
+  ];
 
   return (
     <GenericTable
