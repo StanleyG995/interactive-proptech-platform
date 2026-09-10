@@ -107,30 +107,30 @@ const BuildingPlan = () => {
               <div className="font-semibold text-2xl bg-[#f0690b] px-3 py-2 text-white ">
                 {activeFloor.building}
               </div>
-              <div className="font-hairline text-lg text-zinc-500/70 uppercase tracking-wider pr-3 py-2">
-                P{activeFloor.number}
+              <div className="font-hairline text-sm text-zinc-500/80 uppercase tracking-wider pr-3 py-2">
+                Floor {activeFloor.number}
               </div>
             </div>
 
-            <div className="space-y-1 flex flex-col gap-2 px-3 py-2">
+            <div className="space-y-1 flex flex-col gap-1 px-3 py-2">
               <div className="flex justify-between text-zinc-600 uppercase text-sm tracking-wider gap-6">
-                Wolne{" "}
-                <span className="font-bold text-emerald-700">
+                Available{" "}
+                <span className="font-bold text-emerald-600">
                   {stats.available}
                 </span>
               </div>
               <div className="flex justify-between text-zinc-600 uppercase text-sm tracking-wider gap-6">
-                Zarezer.{" "}
+                Reserved{" "}
                 <span className="font-bold text-amber-600">
                   {stats.reserved}
                 </span>
               </div>
               <div className="flex justify-between text-zinc-600 uppercase text-sm tracking-wider gap-6">
-                Sprzedane{" "}
+                Sold{" "}
                 <span className="font-bold text-red-700">{stats.sold}</span>
               </div>
               <div className="flex justify-between text-zinc-900 uppercase text-sm tracking-wider gap-6 border-t border-gray-400 pt-2">
-                Wszystkie <span className="font-bold">{stats.total}</span>
+                All <span className="font-bold">{stats.total}</span>
               </div>
             </div>
           </div>
