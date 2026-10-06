@@ -13,7 +13,7 @@ const BuildingPlan = () => {
   const setFloor = useApartmentsStore((state) => state.setFloor);
   const { data: apartments = [] } = useAllApartments();
 
-  // Śledzenie pozycji kursora wewnątrz kontenera
+ 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     setMousePos({
@@ -22,7 +22,7 @@ const BuildingPlan = () => {
     });
   };
 
-  // Obliczanie statystyk dla aktywnego piętra
+  
   const getFloorStats = (building: string, floorNumber: number) => {
     const floorApartments = apartments.filter(
       (apt) => apt.building === building && apt.floor === floorNumber,
