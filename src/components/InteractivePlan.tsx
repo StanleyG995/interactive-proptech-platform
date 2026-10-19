@@ -54,8 +54,8 @@ export default function InteractivePlan() {
       {isFloorView && (
         <button
           onClick={() => {
-            setFloor(null);
-            setBuilding(null);
+            setFloor('');
+            setBuilding('');
           }}
           className="self-start mb-4 px-4 py-2 bg-zinc-800 text-white rounded-md text-sm font-medium hover:bg-zinc-700 transition-colors shadow-sm cursor-pointer"
         >
